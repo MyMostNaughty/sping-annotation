@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd 
+http://www.springframework.org/schema/tx 
+http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+	http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd">
+	<!-- 以前引入properties方式 -->
+	<!-- <context:property-placeholder location="classpath:person.properties"/> -->
+	
+	
+	<!-- 以前的包扫描 xml配置方式、只要标注了@Controller、@Service、@Repository、@Component的类会自动扫描加入容器中 
+	     use-default-filter="false" 禁用掉默认的扫描规则（默认规则扫描所有的），只包含(context:include-filter)才能生效。
+	     exclude-filter:根据规则排除一些组件
+	
+	<context:component-scan base-package="com.zixue" use-default-filters="false"  >
+		<context:include-filter type="annotation" expression=""/>
+		<context:exclude-filter type="annotation" expression=""/>
+	</context:component-scan> -->
+	<!-- <bean></bean>以前使用bean标签配置一些组件进入spring容器 
+	     init-method="" bean创建时调用方法---必须没有参数，可以抛异常
+	     destory-method="" bean销毁时调用方法----必须没有参数，可以抛异常
+	-->
+	<!-- <bean id="person" class="com.zixue.bean.person" init-method="" destroy-method=""> -->
+	<bean id="person" class="com.zixue.bean.person" >
+		<property name="age" value="18"></property>
+		<property name="name" value="张三"></property>
+	</bean>
+	
+	<!-- 开启基于注解版功能 -->
+	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
+	
+</beans>
